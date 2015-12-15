@@ -1,4 +1,4 @@
-; -*- coding: euc-jp-unix -*-
+; -*- coding: utf-8-unix -*-
 ;; hensyu-mode.el --- major mode for TopStudio tag
 ;; Copyright 1999-2015 Kenshi Muto <kmuto@debian.org>
 
@@ -10,34 +10,34 @@
 ;; License:
 ;;   GNU General Public License version 2 (see COPYING)
 
-;; ÊÔ½¸¥â¡¼¥É
+;; ç·¨é›†ãƒ¢ãƒ¼ãƒ‰
 
-;; C-c C-a ¥æ¡¼¥¶¡¼¤«¤éÊÔ½¸¤Ø¤Î¥á¥Ã¥»¡¼¥¸
-;; C-c C-k ¥æ¡¼¥¶¡¼Ãí
-;; C-c C-d DTP¤Ø¤Î¥á¥Ã¥»¡¼¥¸
-;; C-c C-s ¢¡¢ª¤ò¸¡º÷
-;; C-c C-r »²¾ÈÀè¤ò¤¢¤È¤Ç³ÎÇ§
-;; C-c C-h ¢£¥¿¥¤¥È¥ëÁŞÆş
-;; C-c 1   ¶á½ê¤ÎURI¤ò¸¡º÷¤·¤Æ¥Ö¥é¥¦¥¶¤ò³«¤¯
-;; C-c 2   ÈÏ°Ï¤òURI¤È¤·¤Æ¥Ö¥é¥¦¥¶¤ò³«¤¯
-;; C-c !   ºî¶ÈÅÓÃæ¤ò¼¨¤¹
-;; C-c (   Á´³Ñ(
-;; C-c )   Á´³Ñ)
-;; C-c [   ¡Ú
-;; C-c ]    ¡Û
-;; C-c -    ¡İ
+;; C-c C-a ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‹ã‚‰ç·¨é›†ã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+;; C-c C-k ãƒ¦ãƒ¼ã‚¶ãƒ¼æ³¨
+;; C-c C-d DTPã¸ã®ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸
+;; C-c C-s â—†â†’ã‚’æ¤œç´¢
+;; C-c C-r å‚ç…§å…ˆã‚’ã‚ã¨ã§ç¢ºèª
+;; C-c C-h â– ã‚¿ã‚¤ãƒˆãƒ«æŒ¿å…¥
+;; C-c 1   è¿‘æ‰€ã®URIã‚’æ¤œç´¢ã—ã¦ãƒ–ãƒ©ã‚¦ã‚¶ã‚’é–‹ã
+;; C-c 2   ç¯„å›²ã‚’URIã¨ã—ã¦ãƒ–ãƒ©ã‚¦ã‚¶ã‚’é–‹ã
+;; C-c !   ä½œæ¥­é€”ä¸­ã‚’ç¤ºã™
+;; C-c (   å…¨è§’(
+;; C-c )   å…¨è§’)
+;; C-c [   ã€
+;; C-c ]    ã€‘
+;; C-c -    âˆ’
 
 (run-hooks 'hensyu-load-hook)
 
-(defconst hensyu-version "1.14"
-  "ÊÔ½¸¥â¡¼¥É¥Ğ¡¼¥¸¥ç¥ó")
+(defconst hensyu-version "1.15"
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ãƒãƒ¼ã‚¸ãƒ§ãƒ³")
 
-;; ´ğËÜÀßÄê
+;; åŸºæœ¬è¨­å®š
 (defvar hensyu-load-hook nil
-  "ÊÔ½¸¥â¡¼¥É¥Õ¥Ã¥¯")
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ãƒ•ãƒƒã‚¯")
 
 (defvar hensyu-mode-map (make-sparse-keymap)
-  "ÊÔ½¸¥â¡¼¥É¥­¡¼¥Ş¥Ã¥×")
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã‚­ãƒ¼ãƒãƒƒãƒ—")
 
 (defvar hensyu-highlight-face-list
   '(hensyu-underline
@@ -45,123 +45,123 @@
     hensyu-italic
     hensyu-comment
     )
-  "ÊÔ½¸¥â¡¼¥Éface")
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰face")
 
 (defvar hensyu-name-list 
-  '(("ÊÔ½¸¼Ô" . "ÊÔ½¸Ãí")
-    ("ËİÌõ¼Ô" . "ËİÌõÃí")
-    ("´ÆÌõ" . "´ÆÃí")
-    ("Ãø¼Ô" . "Ãí")
-    ("kmuto" . "Ãí")
+  '(("ç·¨é›†è€…" . "ç·¨é›†æ³¨")
+    ("ç¿»è¨³è€…" . "ç¿»è¨³æ³¨")
+    ("ç›£è¨³" . "ç›£æ³¨")
+    ("è‘—è€…" . "æ³¨")
+    ("kmuto" . "æ³¨")
     )
-  "ÊÔ½¸¥â¡¼¥É¤ÎÌ¾Á°¥ê¥¹¥È"
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã®åå‰ãƒªã‚¹ãƒˆ"
 )
 (defvar hensyu-dtp-list
-  '("DTPÏ¢Íí")
-  "DTPÃ´ÅöÌ¾¥ê¥¹¥È"
+  '("DTPé€£çµ¡")
+  "DTPæ‹…å½“åãƒªã‚¹ãƒˆ"
 )
 
-(defvar hensyu-mode-name "ÊÔ½¸¼Ô" "¥æ¡¼¥¶¡¼¤Î¸¢¸Â")
-(defvar hensyu-mode-tip-name "ÊÔ½¸Ãí" "Ãí¼á»ş¤ÎÌ¾Á°")
-(defvar hensyu-mode-dtp "DTPÏ¢Íí" "DTPÃ´Åö¤ÎÌ¾Á°")
-(defvar hensyu-comment-start "¢¡¢ª" "ÊÔ½¸¥¿¥°¤Î³«»ÏÊ¸»ú")
-(defvar hensyu-comment-end "¢«¢¡" "ÊÔ½¸¥¿¥°¤Î½ªÎ»Ê¸»ú")
-(defvar hensyu-index-start "//index{" "º÷°ú¥¿¥°¤Î³«»ÏÊ¸»ú")
-(defvar hensyu-index-end "//}" "º÷°ú¥¿¥°¤Î½ªÎ»Ê¸»ú")
-(defvar hensyu-tex-mode nil "nil:ÄÌ¾ï¥â¡¼¥É t:EWB¸ş¤±¤Î¥â¡¼¥É")
-(defvar hensyu-use-skk-mode t "t:SKK¥â¡¼¥É¤Ç³«»Ï")
+(defvar hensyu-mode-name "ç·¨é›†è€…" "ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®æ¨©é™")
+(defvar hensyu-mode-tip-name "ç·¨é›†æ³¨" "æ³¨é‡ˆæ™‚ã®åå‰")
+(defvar hensyu-mode-dtp "DTPé€£çµ¡" "DTPæ‹…å½“ã®åå‰")
+(defvar hensyu-comment-start "â—†â†’" "ç·¨é›†ã‚¿ã‚°ã®é–‹å§‹æ–‡å­—")
+(defvar hensyu-comment-end "â†â—†" "ç·¨é›†ã‚¿ã‚°ã®çµ‚äº†æ–‡å­—")
+(defvar hensyu-index-start "//index{" "ç´¢å¼•ã‚¿ã‚°ã®é–‹å§‹æ–‡å­—")
+(defvar hensyu-index-end "//}" "ç´¢å¼•ã‚¿ã‚°ã®çµ‚äº†æ–‡å­—")
+(defvar hensyu-tex-mode nil "nil:é€šå¸¸ãƒ¢ãƒ¼ãƒ‰ t:EWBå‘ã‘ã®ãƒ¢ãƒ¼ãƒ‰")
+(defvar hensyu-use-skk-mode nil "t:SKKãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹")
 
 (defvar hensyu-key-mapping
   '(
-   ("[" . "¡Ú")
-   ("]" . "¡Û")
-   ("(" . "¡Ê")
-   (")" . "¡Ë")
-   ("8" . "¡Ê")
-   ("9" . "¡Ë")
-   ("-" . "¡İ")
-   ("*" . "¡ö")
-   ("/" . "¡¿")
-   ("\\" . "¡ï")
-   (" " . "¡¡")
-   (":" . "¡§")
+   ("[" . "ã€")
+   ("]" . "ã€‘")
+   ("(" . "ï¼ˆ")
+   (")" . "ï¼‰")
+   ("8" . "ï¼ˆ")
+   ("9" . "ï¼‰")
+   ("-" . "âˆ’")
+   ("*" . "ï¼Š")
+   ("/" . "ï¼")
+   ("\\" . "ï¿¥")
+   (" " . "ã€€")
+   (":" . "ï¼š")
    ("<" . "<\\<>")
    )
-  "Á´³ÑÃÖ´¹¥­¡¼")
+  "å…¨è§’ç½®æ›ã‚­ãƒ¼")
 
-(defvar hensyu-uri-regexp "\\(\\b\\(s?https?\\|ftp\\|file\\|gopher\\|news\\|telnet\\|wais\\|mailto\\):\\(//[-a-zA-Z0-9_.]+:[0-9]*\\)?[-a-zA-Z0-9_=?#$@~`%&*+|\\/.,]*[-a-zA-Z0-9_=#$@~`%&*+|\\/]+\\)\\|\\(\\([^-A-Za-z0-9!_.%]\\|^\\)[-A-Za-z0-9._!%]+@[A-Za-z0-9][-A-Za-z0-9._!]+[A-Za-z0-9]\\)" "URIÁªÂòÉôÊ¬Àµµ¬É½¸½")
+(defvar hensyu-uri-regexp "\\(\\b\\(s?https?\\|ftp\\|file\\|gopher\\|news\\|telnet\\|wais\\|mailto\\):\\(//[-a-zA-Z0-9_.]+:[0-9]*\\)?[-a-zA-Z0-9_=?#$@~`%&*+|\\/.,]*[-a-zA-Z0-9_=#$@~`%&*+|\\/]+\\)\\|\\(\\([^-A-Za-z0-9!_.%]\\|^\\)[-A-Za-z0-9._!%]+@[A-Za-z0-9][-A-Za-z0-9._!]+[A-Za-z0-9]\\)" "URIé¸æŠéƒ¨åˆ†æ­£è¦è¡¨ç¾")
 
-;; ÊÔ½¸¥â¡¼¥É¥Ù¡¼¥¹´Ø¿ô
+;; ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹é–¢æ•°
 (defun hensyu-mode ()
-  "¥á¥¸¥ã¡¼ÊÔ½¸¥â¡¼¥É"
+  "ãƒ¡ã‚¸ãƒ£ãƒ¼ç·¨é›†ãƒ¢ãƒ¼ãƒ‰"
   (interactive)
   (kill-all-local-variables)
 
   (let ()
 
     (setq major-mode 'hensyu-mode
-	  mode-name hensyu-mode-name
-	  )
+          mode-name hensyu-mode-name
+          )
     
     (auto-fill-mode 0)
     (if hensyu-use-skk-mode (skk-mode))
 
-    ;; ¥Õ¥§¥¤¥¹
+    ;; ãƒ•ã‚§ã‚¤ã‚¹
     (require 'font-lock)
 
     (defcustom hensyu-font-lock-keywords
-	`(("¢¡¢ª[^¢¡]*¢«¢¡" . hensyu-mode-comment-face)
-	  ("//hidden{.*?//}" . hensyu-mode-comment-face)
-	  ("¡Ú[^¡Û]*¡Û" . hensyu-mode-comment-face)
-	  ("<Ãí[^>]*>" . hensyu-mode-comment-face)
-	  ("<ÊÔÃí[^>]*>" . hensyu-mode-comment-face)
-	  ("<ÌõÃí[^>]*>" . hensyu-mode-comment-face)
-	  ("<´ÆÃí[^>]*>" . hensyu-mode-comment-face)
-	  ("<´ÆÌõ¼ÔÃí[^>]*>" . hensyu-mode-comment-face)
-	  ("^¢£.*" . hensyu-mode-title-face)
-	  ("^//i+¡¡.*" . hensyu-mode-title-face)
-	  ("<U>.*?<P>" . hensyu-mode-underline-face)
-	  ("¢¤.*?¡ù" . hensyu-mode-underline-face)
-	  ("<B>.*?<P>" . hensyu-mode-bold-face)
-	  ("¡ú.*?¡ù" . hensyu-mode-bold-face)
-	  ("<I>.*?<P>" . hensyu-mode-italic-face)
-	  ("¢¥.*?¡ù" . hensyu-mode-italic-face)
-	  ("//it{.*?//}" . hensyu-mode-italic-face)
-	  ("//g1{.*?//}" . hensyu-mode-bold-face)
-	  ("//index{.*?//}" . hensyu-mode-hide-face)
-	  ("<\<>" . hensyu-mode-bracket-face)
-	  )
-	"ÊÔ½¸¥â¡¼¥É¤Îface"
-	:group 'hensyu-mode
-	:type 'list)
+        `(("â—†â†’[^â—†]*â†â—†" . hensyu-mode-comment-face)
+          ("//hidden{.*?//}" . hensyu-mode-comment-face)
+          ("ã€[^ã€‘]*ã€‘" . hensyu-mode-comment-face)
+          ("<æ³¨[^>]*>" . hensyu-mode-comment-face)
+          ("<ç·¨æ³¨[^>]*>" . hensyu-mode-comment-face)
+          ("<è¨³æ³¨[^>]*>" . hensyu-mode-comment-face)
+          ("<ç›£æ³¨[^>]*>" . hensyu-mode-comment-face)
+          ("<ç›£è¨³è€…æ³¨[^>]*>" . hensyu-mode-comment-face)
+          ("^â– .*" . hensyu-mode-title-face)
+          ("^//i+ã€€.*" . hensyu-mode-title-face)
+          ("<U>.*?<P>" . hensyu-mode-underline-face)
+          ("â–³.*?â˜†" . hensyu-mode-underline-face)
+          ("<B>.*?<P>" . hensyu-mode-bold-face)
+          ("â˜….*?â˜†" . hensyu-mode-bold-face)
+          ("<I>.*?<P>" . hensyu-mode-italic-face)
+          ("â–².*?â˜†" . hensyu-mode-italic-face)
+          ("//it{.*?//}" . hensyu-mode-italic-face)
+          ("//g1{.*?//}" . hensyu-mode-bold-face)
+          ("//index{.*?//}" . hensyu-mode-hide-face)
+          ("<\<>" . hensyu-mode-bracket-face)
+          )
+        "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã®face"
+        :group 'hensyu-mode
+        :type 'list)
 
     (defface hensyu-mode-comment-face
       '((t (:foreground "Red")))
-      "¥³¥á¥ó¥È¤Î¥Õ¥§¥¤¥¹"
+      "ã‚³ãƒ¡ãƒ³ãƒˆã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-title-face
       '((t (:foreground "darkgreen")))
-      "¥¿¥¤¥È¥ë¤Î¥Õ¥§¥¤¥¹"
+      "ã‚¿ã‚¤ãƒˆãƒ«ã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-underline-face
       '((t (:underline t :foreground "DarkBlue")))
-      "¥¢¥ó¥À¡¼¥é¥¤¥ó¤Î¥Õ¥§¥¤¥¹"
+      "ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³ã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-bold-face
       '((t (:bold t :foreground "Blue")))
-      "¥Ü¡¼¥ë¥É¤Î¥Õ¥§¥¤¥¹"
+      "ãƒœãƒ¼ãƒ«ãƒ‰ã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-italic-face
       '((t (:italic t :bold t :foreground "DarkRed")))
-      "¥¤¥¿¥ê¥Ã¥¯¤Î¥Õ¥§¥¤¥¹"
+      "ã‚¤ã‚¿ãƒªãƒƒã‚¯ã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-bracket-face
       '((t (:bold t :foreground "DarkBlue")))
-      "<¤Î¥Õ¥§¥¤¥¹"
+      "<ã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
     (defface hensyu-mode-hide-face
       '((t (:bold t :foreground "plum4")))
-      "index¤Î¥Õ¥§¥¤¥¹"
+      "indexã®ãƒ•ã‚§ã‚¤ã‚¹"
       :group 'hensyu-mode)
 
     (defvar hensyu-mode-comment-face 'hensyu-mode-comment-face)
@@ -224,23 +224,23 @@
     )
   )
 
-;; ¥ê¡¼¥¸¥ç¥ó¼è¤ê¹ş¤ß
+;; ãƒªãƒ¼ã‚¸ãƒ§ãƒ³å–ã‚Šè¾¼ã¿
 (defun hensyu-block-region (pattern &optional force start end)
-  "ÁªÂòÎÎ°è¤ò°Ï¤à¥¿¥°¤òÀßÄê"
-  (interactive "s¥³¥á¥ó¥È: \nP\nr")
+  "é¸æŠé ˜åŸŸã‚’å›²ã‚€ã‚¿ã‚°ã‚’è¨­å®š"
+  (interactive "sã‚³ãƒ¡ãƒ³ãƒˆ: \nP\nr")
 
   (save-restriction
     (narrow-to-region start end)
      (goto-char (point-min))
-     (insert hensyu-comment-start "³«»Ï:" pattern " -" hensyu-mode-name hensyu-comment-end "\n")
+     (insert hensyu-comment-start "é–‹å§‹:" pattern " -" hensyu-mode-name hensyu-comment-end "\n")
      (goto-char (point-max))
-     (insert hensyu-comment-start "½ªÎ»:" pattern " -" hensyu-mode-name hensyu-comment-end "\n")
+     (insert hensyu-comment-start "çµ‚äº†:" pattern " -" hensyu-mode-name hensyu-comment-end "\n")
      )
   )
 
-;; ¥Õ¥©¥ó¥ÈÉÕ¤±
+;; ãƒ•ã‚©ãƒ³ãƒˆä»˜ã‘
 (defun hensyu-string-region (markb marke start end)
-  "ÁªÂòÎÎ°è¤Ë¥Õ¥©¥ó¥È¤òÀßÄê"
+  "é¸æŠé ˜åŸŸã«ãƒ•ã‚©ãƒ³ãƒˆã‚’è¨­å®š"
 
   (save-restriction
     (narrow-to-region start end)
@@ -252,92 +252,92 @@
   )
 
 (defun hensyu-bold-region (start end)
-  "¥Ü¡¼¥ë¥É¥Õ¥©¥ó¥È¥¿¥°"
+  "ãƒœãƒ¼ãƒ«ãƒ‰ãƒ•ã‚©ãƒ³ãƒˆã‚¿ã‚°"
   (interactive "r")
   (if (progn (not hensyu-tex-mode))
 ;;      (hensyu-string-region "<B>" "<P>" start end)
-      (hensyu-string-region "¡ú" "¡ù" start end)
+      (hensyu-string-region "â˜…" "â˜†" start end)
       (hensyu-string-region "//b{" "//}" start end)
       )
   )
 (defun hensyu-italic-region (start end)
-  "¥¤¥¿¥ê¥Ã¥¯¥Õ¥©¥ó¥È¥¿¥°"
+  "ã‚¤ã‚¿ãƒªãƒƒã‚¯ãƒ•ã‚©ãƒ³ãƒˆã‚¿ã‚°"
   (interactive "r")
   (if (progn (not hensyu-tex-mode))
 ;;      (hensyu-string-region "<I>" "<P>" start end)
-      (hensyu-string-region "¢¥" "¡ù" start end)
+      (hensyu-string-region "â–²" "â˜†" start end)
       (hensyu-string-region "//it{" "//}" start end)
       )
   )
 (defun hensyu-underline-region (start end)
-  "¥¢¥ó¥À¡¼¥é¥¤¥ó(¼Âºİ¤Ï¥¿¥¤¥×¥Õ¥©¥ó¥È)¥Õ¥©¥ó¥È¥¿¥°"
+  "ã‚¢ãƒ³ãƒ€ãƒ¼ãƒ©ã‚¤ãƒ³(å®Ÿéš›ã¯ã‚¿ã‚¤ãƒ—ãƒ•ã‚©ãƒ³ãƒˆ)ãƒ•ã‚©ãƒ³ãƒˆã‚¿ã‚°"
   (interactive "r")
   (if (progn (not hensyu-tex-mode))
 ;;      (hensyu-string-region "<U>" "<P>" start end)
-      (hensyu-string-region "¢¤" "¡ù" start end)
+      (hensyu-string-region "â–³" "â˜†" start end)
       (hensyu-string-region "//tt{" "//}" start end)
       )
   )
 
-;; ÊÔ½¸°ì»ş½ªÎ»
+;; ç·¨é›†ä¸€æ™‚çµ‚äº†
 (defun hensyu-kokomade ()
   (interactive)
-  "°ì»ş½ªÎ»¥¿¥°¤òÁŞÆş"
-  (insert hensyu-comment-start "¤³¤³¤Ş¤Ç -" hensyu-mode-name hensyu-comment-end "\n")
+  "ä¸€æ™‚çµ‚äº†ã‚¿ã‚°ã‚’æŒ¿å…¥"
+  (insert hensyu-comment-start "ã“ã“ã¾ã§ -" hensyu-mode-name hensyu-comment-end "\n")
   )
 
-;; ÊÔ½¸¥³¥á¥ó¥È
+;; ç·¨é›†ã‚³ãƒ¡ãƒ³ãƒˆ
 (defun hensyu-normal-comment (pattern &optional force)
-  (interactive "s¥³¥á¥ó¥È: \nP")
-  "¥³¥á¥ó¥È¤òÁŞÆş"
+  (interactive "sã‚³ãƒ¡ãƒ³ãƒˆ: \nP")
+  "ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŒ¿å…¥"
   (if (progn (not hensyu-tex-mode))
       (insert hensyu-comment-start pattern " -" hensyu-mode-name hensyu-comment-end)
       (insert "//hidden{" pattern " -" hensyu-mode-name "//}")
       )
   )
 
-;; DTP¸ş¤±¥³¥á¥ó¥È
+;; DTPå‘ã‘ã‚³ãƒ¡ãƒ³ãƒˆ
 (defun hensyu-dtp-comment (pattern &optional force)
-  (interactive "sDTP¸ş¤±¥³¥á¥ó¥È: \nP")
-  "DTP¸ş¤±¥³¥á¥ó¥È¤òÁŞÆş"
+  (interactive "sDTPå‘ã‘ã‚³ãƒ¡ãƒ³ãƒˆ: \nP")
+  "DTPå‘ã‘ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŒ¿å…¥"
   (insert hensyu-comment-start hensyu-mode-dtp ":" pattern " -" hensyu-mode-name hensyu-comment-end)
   )
 
-;; Ãí¼á
+;; æ³¨é‡ˆ
 (defun hensyu-tip-comment (pattern &optional force)
-  (interactive "sÃí¼á¥³¥á¥ó¥È: \nP")
-  "Ãí¼á¥³¥á¥ó¥È¤òÁŞÆş"
+  (interactive "sæ³¨é‡ˆã‚³ãƒ¡ãƒ³ãƒˆ: \nP")
+  "æ³¨é‡ˆã‚³ãƒ¡ãƒ³ãƒˆã‚’æŒ¿å…¥"
   (insert hensyu-comment-start hensyu-mode-tip-name ":" pattern " -" hensyu-mode-name hensyu-comment-end)
   )
 
-;; »²¾È
+;; å‚ç…§
 (defun hensyu-reference-comment ()
   (interactive)
-  "»²¾È¥³¥á¥ó¥È¤òÁŞÆş"
-  (insert hensyu-comment-start "»²¾ÈÀè³ÎÇ§ -" hensyu-mode-name hensyu-comment-end)
+  "å‚ç…§ã‚³ãƒ¡ãƒ³ãƒˆã‚’æŒ¿å…¥"
+  (insert hensyu-comment-start "å‚ç…§å…ˆç¢ºèª -" hensyu-mode-name hensyu-comment-end)
   )
 
-;; º÷°ú
+;; ç´¢å¼•
 (defun hensyu-index-comment (pattern &optional force)
-  (interactive "sº÷°ú: \nP")
-  "º÷°ú¥ï¡¼¥É¤òÁŞÆş"
+  (interactive "sç´¢å¼•: \nP")
+  "ç´¢å¼•ãƒ¯ãƒ¼ãƒ‰ã‚’æŒ¿å…¥"
   (insert hensyu-index-start pattern hensyu-index-end)
   )
 
-;; ¥Ø¥Ã¥À
+;; ãƒ˜ãƒƒãƒ€
 (defun hensyu-header (pattern &optional force)
-  (interactive "s¥Ø¥Ã¥À¥ì¥Ù¥ë: \nP")
-  "Ãí¼á¥³¥á¥ó¥È¤òÁŞÆş"
+  (interactive "sãƒ˜ãƒƒãƒ€ãƒ¬ãƒ™ãƒ«: \nP")
+  "æ³¨é‡ˆã‚³ãƒ¡ãƒ³ãƒˆã‚’æŒ¿å…¥"
   (if (progn (not hensyu-tex-mode))
-      (insert "¢£H" pattern "¢£")
+      (insert "â– H" pattern "â– ")
       (insert "//" pattern)
       )
   )
 
-;; ¥Ö¥é¥¦¥º
+;; ãƒ–ãƒ©ã‚¦ã‚º
 (defun hensyu-search-uri ()
   (interactive)
-  "¼ê¶á¤ÊURI¤ò¸¡º÷¤·¤Æ¥Ö¥é¥¦¥¶¤ÇÉ½¼¨"
+  "æ‰‹è¿‘ãªURIã‚’æ¤œç´¢ã—ã¦ãƒ–ãƒ©ã‚¦ã‚¶ã§è¡¨ç¤º"
   (re-search-forward hensyu-uri-regexp)
   (goto-char (match-beginning 1))
   (browser-url (match-string 1))
@@ -345,44 +345,44 @@
 
 (defun hensyu-search-uri2 (start end)
   (interactive "r")
-  "ÁªÂòÎÎ°è¤ò¥Ö¥é¥¦¥¶¤ÇÉ½¼¨"
+  "é¸æŠé ˜åŸŸã‚’ãƒ–ãƒ©ã‚¦ã‚¶ã§è¡¨ç¤º"
   (message (buffer-substring-no-properties start end))
   (browse-url (buffer-substring-no-properties start end))
   )
 
-;; Á´³ÑÊ¸»ú
+;; å…¨è§’æ–‡å­—
 (defun hensyu-zenkaku-mapping (key)
-  "Á´³ÑÊ¸»ú¤ÎÁŞÆş"
+  "å…¨è§’æ–‡å­—ã®æŒ¿å…¥"
   (insert (cdr (assoc key hensyu-key-mapping)))
 )
 
-(defun hensyu-zenkaku-mapping-lparenthesis () (interactive) "Á´³Ñ(" (hensyu-zenkaku-mapping "("))
-(defun hensyu-zenkaku-mapping-rparenthesis () (interactive) "Á´³Ñ)" (hensyu-zenkaku-mapping ")"))
-(defun hensyu-zenkaku-mapping-langle () (interactive) "Á´³Ñ[" (hensyu-zenkaku-mapping "["))
-(defun hensyu-zenkaku-mapping-rangle () (interactive) "Á´³Ñ[" (hensyu-zenkaku-mapping "]"))
-(defun hensyu-zenkaku-mapping-minus () (interactive) "Á´³Ñ-" (hensyu-zenkaku-mapping "-"))
-(defun hensyu-zenkaku-mapping-asterisk () (interactive) "Á´³Ñ*" (hensyu-zenkaku-mapping "*"))
-(defun hensyu-zenkaku-mapping-slash () (interactive) "Á´³Ñ/" (hensyu-zenkaku-mapping "/"))
-(defun hensyu-zenkaku-mapping-yen () (interactive) "Á´³Ñ¡ï" (hensyu-zenkaku-mapping "\\"))
-(defun hensyu-zenkaku-mapping-space () (interactive) "Á´³Ñ " (hensyu-zenkaku-mapping " "))
-(defun hensyu-zenkaku-mapping-colon () (interactive) "Á´³Ñ:" (hensyu-zenkaku-mapping ":"))
-(defun hensyu-zenkaku-mapping-lbracket () (interactive) "<¥¿¥°" (hensyu-zenkaku-mapping "<"))
+(defun hensyu-zenkaku-mapping-lparenthesis () (interactive) "å…¨è§’(" (hensyu-zenkaku-mapping "("))
+(defun hensyu-zenkaku-mapping-rparenthesis () (interactive) "å…¨è§’)" (hensyu-zenkaku-mapping ")"))
+(defun hensyu-zenkaku-mapping-langle () (interactive) "å…¨è§’[" (hensyu-zenkaku-mapping "["))
+(defun hensyu-zenkaku-mapping-rangle () (interactive) "å…¨è§’[" (hensyu-zenkaku-mapping "]"))
+(defun hensyu-zenkaku-mapping-minus () (interactive) "å…¨è§’-" (hensyu-zenkaku-mapping "-"))
+(defun hensyu-zenkaku-mapping-asterisk () (interactive) "å…¨è§’*" (hensyu-zenkaku-mapping "*"))
+(defun hensyu-zenkaku-mapping-slash () (interactive) "å…¨è§’/" (hensyu-zenkaku-mapping "/"))
+(defun hensyu-zenkaku-mapping-yen () (interactive) "å…¨è§’ï¿¥" (hensyu-zenkaku-mapping "\\"))
+(defun hensyu-zenkaku-mapping-space () (interactive) "å…¨è§’ " (hensyu-zenkaku-mapping " "))
+(defun hensyu-zenkaku-mapping-colon () (interactive) "å…¨è§’:" (hensyu-zenkaku-mapping ":"))
+(defun hensyu-zenkaku-mapping-lbracket () (interactive) "<ã‚¿ã‚°" (hensyu-zenkaku-mapping "<"))
 
-;; ´ğËÜ¥â¡¼¥É¤ÎÊÑ¹¹
+;; åŸºæœ¬ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´
 (defun hensyu-change-mode ()
   (interactive)
-  "ÊÔ½¸¥â¡¼¥É¤ÎÊÑ¹¹"
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´"
   (let (key _message _element (_list hensyu-name-list) (sum 0))
     (while _list
       (setq _element (car (car _list)))
       (setq sum ( + sum 1))
       (if _message
-	(setq _message (format "%s%d.%s " _message sum _element))
-	(setq _message (format "%d.%s " sum _element))
-	)
+        (setq _message (format "%s%d.%s " _message sum _element))
+        (setq _message (format "%d.%s " sum _element))
+        )
       (setq _list (cdr _list))
       )
-    (message (concat "ÊÔ½¸¥â¡¼¥É: " _message ":"))
+    (message (concat "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰: " _message ":"))
     (setq key (read-char))
     (cond
      ((eq key ?1) (hensyu-change-mode-sub 0))
@@ -393,33 +393,33 @@
      )
     )
   (setq hensyu-mode-tip-name (cdr (assoc hensyu-mode-name hensyu-name-list)))
-  (message (concat "¸½ºß¤Î¥â¡¼¥É: " hensyu-mode-name))
+  (message (concat "ç¾åœ¨ã®ãƒ¢ãƒ¼ãƒ‰: " hensyu-mode-name))
   (setq mode-name hensyu-mode-name)
   )
 
 (defun hensyu-change-mode-sub (number)
-  "ÊÔ½¸¥â¡¼¥ÉÊÑ¹¹¥µ¥Ö¥ë¡¼¥Á¥ó"
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰å¤‰æ›´ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³"
   (let (list)
     (setq list (nth number hensyu-name-list))
     (setq hensyu-mode-name (car list))
     )
   )
 
-;; DTP ¤ÎÊÑ¹¹
+;; DTP ã®å¤‰æ›´
 (defun hensyu-change-dtp ()
   (interactive)
-  "DTPÃ´Åö¤ÎÊÑ¹¹"
+  "DTPæ‹…å½“ã®å¤‰æ›´"
   (let (key _message _element (_list hensyu-dtp-list) (sum 0))
     (while _list
       (setq _element (car _list))
       (setq sum ( + sum 1))
       (if _message
-	(setq _message (format "%s%d.%s " _message sum _element))
-	(setq _message (format "%d.%s " sum _element))
-	)
+        (setq _message (format "%s%d.%s " _message sum _element))
+        (setq _message (format "%d.%s " sum _element))
+        )
       (setq _list (cdr _list))
       )
-    (message (concat "DTPÃ´Åö: " _message ":"))
+    (message (concat "DTPæ‹…å½“: " _message ":"))
     (setq key (read-char))
     (cond
      ((eq key ?1) (hensyu-change-dtp-mode-sub 0))
@@ -432,17 +432,17 @@
   )
 
 (defun hensyu-change-dtp-mode-sub (number)
-  "DTPÃ´ÅöÊÑ¹¹¥µ¥Ö¥ë¡¼¥Á¥ó"
+  "DTPæ‹…å½“å¤‰æ›´ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³"
   (let (list)
     (setq list (nth number hensyu-dtp-list))
     (setq hensyu-dtp-name list)
-    (message (concat "¸½ºß¤ÎDTP: " hensyu-dtp-name))
+    (message (concat "ç¾åœ¨ã®DTP: " hensyu-dtp-name))
     )
   )
 
-;; ÁÈ¤ÎÊÑ¹¹
+;; çµ„ã®å¤‰æ›´
 (defun hensyu-change-mode-sub (number)
-  "ÊÔ½¸¥â¡¼¥É¤Î¥µ¥Ö¥ë¡¼¥Á¥ó"
+  "ç·¨é›†ãƒ¢ãƒ¼ãƒ‰ã®ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³"
   (let (list)
      (setq list (nth number hensyu-name-list))
      (setq hensyu-mode-name (car list))
@@ -451,24 +451,24 @@
   )
 
 (defun hensyu-change-tex-mode (key)
-  (interactive "cÁÈ¥â¡¼¥É»ØÄê: 1.É¸½à 2.TeX: ")
-  "ÁÈ¥â¡¼¥É¤ÎÊÑ¹¹"
+  (interactive "cçµ„ãƒ¢ãƒ¼ãƒ‰æŒ‡å®š: 1.æ¨™æº– 2.TeX: ")
+  "çµ„ãƒ¢ãƒ¼ãƒ‰ã®å¤‰æ›´"
   (progn
     (cond
      ((= key ?1) (progn
-		   (setq hensyu-tex-mode nil)
-		   (message "ÁÈ¥â¡¼¥É: É¸½à¥â¡¼¥É ¤ËÀßÄê")
-		   ))
+                   (setq hensyu-tex-mode nil)
+                   (message "çµ„ãƒ¢ãƒ¼ãƒ‰: æ¨™æº–ãƒ¢ãƒ¼ãƒ‰ ã«è¨­å®š")
+                   ))
      ((= key ?2) (progn
-		   (setq hensyu-tex-mode t)
-		   (message "ÁÈ¥â¡¼¥É: TeX¥â¡¼¥É ¤ËÀßÄê")
-		   ))
+                   (setq hensyu-tex-mode t)
+                   (message "çµ„ãƒ¢ãƒ¼ãƒ‰: TeXãƒ¢ãƒ¼ãƒ‰ ã«è¨­å®š")
+                   ))
      )
     )
   )
 
 (defun hensyu-index-change (start end)
-  "ÁªÂòÎÎ°è¤òº÷°ú¤È¤·¤Æ()¤È¥¹¥Ú¡¼¥¹¤ò¼è¤ë"
+  "é¸æŠé ˜åŸŸã‚’ç´¢å¼•ã¨ã—ã¦()ã¨ã‚¹ãƒšãƒ¼ã‚¹ã‚’å–ã‚‹"
   (interactive "r")
   (let (_hensyu-index-buffer)
     
@@ -477,7 +477,7 @@
       (setq _hensyu-index-buffer (buffer-substring-no-properties start end))
       (goto-char (point-min))
       (while (re-search-forward "\(\\|\)\\| " nil t)
-	(replace-match "" nil nil))
+        (replace-match "" nil nil))
       (goto-char (point-max))
       (insert "@" _hensyu-index-buffer)
       )
@@ -485,8 +485,8 @@
   )
 
 (defun page-increment-region (pattern &optional force start end)
-  "ÁªÂòÎÎ°è¤Î¥Ú¡¼¥¸¿ô¤òÁı¸º"
-  (interactive "nÁı¸ºÃÍ: \nP\nr")
+  "é¸æŠé ˜åŸŸã®ãƒšãƒ¼ã‚¸æ•°ã‚’å¢—æ¸›"
+  (interactive "nå¢—æ¸›å€¤: \nP\nr")
   (save-restriction
     (narrow-to-region start end)
     (let ((pos (point-min)))
